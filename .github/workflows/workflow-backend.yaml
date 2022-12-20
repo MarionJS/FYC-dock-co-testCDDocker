@@ -65,4 +65,5 @@ jobs:
         with:
           context: ./BACK/API.Library
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: |
+            type=match,pattern=\d.\d.\d

@@ -1,4 +1,4 @@
-name: build & test & publish tag for API.Library, build & push docker image
+name: build & test & publish tag for API.Library, build & push backend docker image
 on:
   push:
     branches:

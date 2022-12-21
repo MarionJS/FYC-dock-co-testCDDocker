@@ -4,7 +4,7 @@ on:
     branches:
       - 5-CICD
     paths:
-      - 'BACK/**'
+      - 'BACK/API.Library/**'
       - '.github/workflows/workflow-backend.yaml'
 
 defaults:

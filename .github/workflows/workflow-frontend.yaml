@@ -1,4 +1,4 @@
-name: build & publish tag, build & push frontend docker image
+name: CI / CD frontend in Docker
 on:
   push:
     branches:

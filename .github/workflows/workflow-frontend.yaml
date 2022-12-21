@@ -25,6 +25,7 @@ jobs:
       - name: Build all projects
         run: |
           npm install -g @angular/cli
+          npm install
           ng build
 
 #     - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*

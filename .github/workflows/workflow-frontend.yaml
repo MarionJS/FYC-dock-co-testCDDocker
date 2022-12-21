@@ -19,12 +19,12 @@ jobs:
       - name : Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Latest Angular
-        uses: actions/angular-github-actions
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
 
       - name: Build all projects
         run: |
-          npm install
+          npm install -g @angular/cli
           ng build
 
 #     - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*

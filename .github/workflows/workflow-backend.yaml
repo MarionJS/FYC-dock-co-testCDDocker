@@ -20,6 +20,8 @@ jobs:
       SpecFlowTestExecutionPath: bin/Release/net6.0/TestExecution.json
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch_depth: 0
       - uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.0.x'
@@ -39,7 +41,7 @@ jobs:
         with:
           name: SpecflowTestResults
           path: BACK/API.Library/LivingDoc.html
-      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      #  - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
       - id: nextversion
         name: next release version
         uses: jenkins-x-plugins/jx-release-version@v2.5.2

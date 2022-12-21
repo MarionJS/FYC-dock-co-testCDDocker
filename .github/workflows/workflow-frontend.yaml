@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name : Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup Node.js environment
@@ -28,18 +28,18 @@ jobs:
           npm install
           ng build
 
-     - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-     - id: nextversion
-       name: next release version
-       uses: jenkins-x-plugins/jx-release-version@v2.6.1
+      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      - id: nextversion
+        name: next release version
+        uses: jenkins-x-plugins/jx-release-version@v2.6.1
 
-     - name: Release
-       uses: softprops/action-gh-release@v1
-       with:
-         tag_name: ${{ steps.nextversion.outputs.version }}
-         generate_release_notes: true
-         fail_on_unmatched_files: true
-         target_commitish: ${{ github.ref }}
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.nextversion.outputs.version }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          target_commitish: ${{ github.ref }}
 
 #     - name: Log in to Docker Hub
 #       uses: docker/login-action@v2

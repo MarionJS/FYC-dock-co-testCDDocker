@@ -65,4 +65,4 @@ jobs:
         with:
           context: ./BACK/API.Library
           push: true
-          tags: ${{ steps.docker-tag.outputs.tag }}
+          tags: ${{ steps.nextversion.outputs.version }}

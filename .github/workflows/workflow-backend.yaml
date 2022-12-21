@@ -57,7 +57,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - run: |
-          docker image build -t ${{ secrets.DOCKER_USERNAME }}/back_vault:${{ steps.nextversion.outputs.version }} -t ${{ secrets.DOCKER_USERNAME }}/back_vault:latest
+          docker image build -t ${{ secrets.DOCKER_USERNAME }}/back_vault:${{ steps.nextversion.outputs.version }} -t ${{ secrets.DOCKER_USERNAME }}/back_vault:latest ./BACK/API.Library
           docker image push --all-tags ${{ secrets.DOCKER_USERNAME }}/back_vault
       #- name: Build and push Docker image
       #  uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc

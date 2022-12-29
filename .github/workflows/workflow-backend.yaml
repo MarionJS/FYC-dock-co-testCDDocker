@@ -59,7 +59,6 @@ jobs:
         with:
           tag_name: ${{ steps.nextversion.outputs.version }}
           generate_release_notes: true
-          fail_on_unmatched_files: true
           target_commitish: ${{ github.ref }}
 
       - name: Log in to Docker Hub

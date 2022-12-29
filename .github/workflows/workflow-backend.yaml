@@ -19,10 +19,10 @@ jobs:
       SpecFlowTestAssemblyPath: bin/Release/net6.0/Library.Tests.Specs.dll
       SpecFlowTestExecutionPath: bin/Release/net6.0/TestExecution.json
     steps:
-      - name : Checkout repository
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name : Set up environment dotnet
+      - name: Set up environment dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: '6.0.x'
@@ -41,14 +41,15 @@ jobs:
           livingdoc test-assembly $SpecFlowDirectory/$SpecFlowTestAssemblyPath -t $SpecFlowDirectory/$SpecFlowTestExecutionPath -o LivingDoc.html
         shell: bash
 
-      - name : Publish LivingDoc
+      - name: Publish LivingDoc
         uses: actions/upload-artifact@v3
         if: success() || failure()
         with:
           name: SpecflowTestResults
           path: BACK/API.Library/LivingDoc.html
 
-      - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+      - name: Get git tags
+        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - id: nextversion
         name: next release version

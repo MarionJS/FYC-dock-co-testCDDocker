@@ -35,10 +35,10 @@ jobs:
         name : next release version
         uses: jenkins-x-plugins/jx-release-version@v2.6.1
 
-      - name: release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ steps.nextversion.outputs.version }}
-          generate_release_note: true
-          target_commitish: ${{ github.ref }}
+      - name: Release
+          uses: softprops/action-gh-release@v1
+          with:
+            tag_name: ${{ steps.nextversion.outputs.version }}
+            generate_release_notes: true
+            target_commitish: ${{ github.ref }}
 

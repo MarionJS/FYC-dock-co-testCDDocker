@@ -47,3 +47,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: build and push docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./FRONT/APP.Web/vaultapp
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/front_vault:${{ steps.nextversion.outputs.version }}, ${{ secrets.DOCKER_USERNAME }}/front_vault:latest

@@ -30,3 +30,7 @@ jobs:
 
       - name: get git tags
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+
+      - id: nextversion
+        name: next release version
+        uses: jenkins-x-plugins/jx-release-version@v2.6.1

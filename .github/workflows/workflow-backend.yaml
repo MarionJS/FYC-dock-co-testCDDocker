@@ -38,7 +38,7 @@ jobs:
       - name : generate LivingDoc
         run: |
           dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
-          livingdoc test-assembly $SpecFlowDirectory/SpecFlowTestAssemblyPath -t $SpecFlowTestExecutionPath -o LivingDoc.html
+          livingdoc test-assembly $SpecFlowDirectory/$SpecFlowTestAssemblyPath -t $SpecFlowTestExecutionPath -o LivingDoc.html
         shell: bash
 
 

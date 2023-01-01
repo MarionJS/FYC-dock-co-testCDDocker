@@ -41,6 +41,13 @@ jobs:
           livingdoc test-assembly $SpecFlowDirectory/$SpecFlowTestAssemblyPath -t $SpecFlowDirectory/$SpecFlowTestExecutionPath -o LivingDoc.html
         shell: bash
 
+      - name: publish livingDoc
+        uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: SpecFlowResults
+          path: BACK/API.Library/LivingDoc.html
+
 
 
 

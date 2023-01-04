@@ -14,10 +14,7 @@ defaults:
 jobs:
   api-library:
     runs-on: ubuntu-latest
-    env:
-      SpecFlowDirectory: Tests/Library.Tests.Specs
-      SpecFlowTestAssemblyPath: bin/Release/net6.0/Library.Tests.Specs.dll
-      SpecFlowTestExecutionPath: bin/Release/net6.0/TestExecution.json
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -34,19 +31,6 @@ jobs:
       - name: Run tests
         run: dotnet test --no-build -c Release -v minimal
         shell: bash
-
-      - name : generate LivingDoc
-        run: |
-          dotnet tool install --global SpecFlow.Plus.LivingDoc.CLI
-          livingdoc test-assembly $SpecFlowDirectory/$SpecFlowTestAssemblyPath -t $SpecFlowDirectory/$SpecFlowTestExecutionPath -o LivingDoc.html
-        shell: bash
-
-      - name: publish livingDoc
-        uses: actions/upload-artifact@v3
-        if: success() || failure()
-        with:
-          name: SpecFlowResults
-          path: BACK/API.Library/LivingDoc.html
 
 
 
